@@ -13,7 +13,8 @@ public:
                     safe_jump = i;
                 }
              
-            }
+            
+        }
         
         
         
