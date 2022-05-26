@@ -27,6 +27,10 @@ public:
             {
                 n++;
             }
+            if(nums[i] > n)
+            {
+                return n;
+            }
             
         }
         
