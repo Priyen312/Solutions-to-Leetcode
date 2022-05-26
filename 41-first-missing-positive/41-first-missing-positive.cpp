@@ -1,8 +1,8 @@
 class Solution {
 public:
     
-    int usingsorting(vector<int> &nums)
-    {
+    int usingsorting(vector<int> &nums){
+        
         //sorting the input array (O(nlog(n))), (O(1))
         int n = 1;
         sort(nums.begin(), nums.end());
@@ -25,10 +25,9 @@ public:
         
     }
     
-    int usingmaps(vector<int> &nums)
-    {
-        //using maps(O(n)), (O(n))
+    int usingmaps(vector<int> &nums){
         
+        //using maps(O(n)), (O(n))
         int n = 1; 
         unordered_map<int, int> m;
         for(int i = 0; i < nums.size(); i++)
@@ -48,6 +47,7 @@ public:
     }
     
     int firstMissingPositive(vector<int>& nums) {
+        
          for(int i = 0; i < nums.size(); i++)
          {
             if(nums[i] <= 0)
