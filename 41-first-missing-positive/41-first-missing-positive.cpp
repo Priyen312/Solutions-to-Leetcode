@@ -49,13 +49,13 @@ public:
     
         for(int i = 0; i < nums.size(); i++)
         {
-            int index = abs(nums[i]);
+            int index = abs(nums[i]) - 1;
             
-            if(index <=nums.size())
+            if(index >= 0 and index <nums.size())
             {
-                if(nums[index - 1] > 0)
+                if(nums[index] > 0)
                 {
-                    nums[index - 1] *= -1;
+                    nums[index] *= -1;
                 }   
             }
 
