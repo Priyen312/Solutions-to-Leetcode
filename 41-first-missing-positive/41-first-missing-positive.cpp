@@ -18,20 +18,39 @@ public:
         
 //         return n + 1;
         
-        int n = 1;
-        sort(nums.begin(), nums.end());
+//         int n = 1;
+//         sort(nums.begin(), nums.end());
+//         for(int i = 0; i < nums.size(); i++)
+            
+//         {
+//             if(nums[i] == n)
+//             {
+//                 n++;
+//             }
+//             if(nums[i] > n)
+//             {
+//                 return n;
+//             }
+            
+//         }
+        
+//         return n;
+        
+        //using maps
+        
+        int n = 1; 
+        unordered_map<int, int> m;
         for(int i = 0; i < nums.size(); i++)
-            
         {
-            if(nums[i] == n)
-            {
-                n++;
-            }
-            if(nums[i] > n)
-            {
+            m[nums[i]]++;
+        }
+        
+        for(int i = 1; i < nums.size() + 1; i++)
+        {
+            if(m.find(n) == m.end())
                 return n;
-            }
-            
+            else
+                n++;
         }
         
         return n;
