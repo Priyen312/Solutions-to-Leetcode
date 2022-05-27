@@ -74,43 +74,49 @@ public:
     
 };
 */
+class Node {
+    public:
+    
+    int val;
+    int minimum;
+    Node *next;
+    
+    Node(int val, int minimum = INT_MAX, Node *next = nullptr)
+    {
+        this->val = val;
+        this->minimum = minimum;
+        
+        this->next = next;
+    }
+};
 class MinStack {
 public:
-long min;
-    stack<long> s;
-
    
+    Node* curr;
     
     void push(int x) {
-        if (s.size() == 0){
-            s.push(-1);
-            min=x;
-        }else{
-            s.push(x-min);//Could be negative if min value needs to change
-            if (x<min) min=x;
+        if (curr == nullptr){// if the stack is empty
+            curr = new Node(x, x, nullptr);
+        }
+        else
+        {
+            curr = new Node(x, min(x, curr->minimum), curr);
+            
         }
     }
 
     void pop() {
-        if (s.size() == 0) return;
-        
-        long p=s.top();s.pop();
-        
-        if (p<0)  min=min-p;//If negative, increase the min value
-        
+        if(curr == nullptr)
+            return;
+        curr = curr->next;
     }
 
     int top() {
-        long tp=s.top();
-        if (tp>0){
-            return (int)(tp+min);
-        }else{
-           return (int)(min);
-        }
+        return curr->val;
     }
 
    int getMin() {
-        return (int)min;
+        return curr->minimum;
     }
 };
 
