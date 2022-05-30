@@ -10,8 +10,7 @@ public:
         if(memo[i] != -1)
             return memo[i];
         
-        int res1 = decode(s, i + 1, memo);
-        int res2 = 0;
+        
         if(i + 1 < s.size() and (s[i] == '1' or (s[i] == '2' and s[i+1] <='6')))
             return memo[i] = decode(s, i + 1, memo) + decode(s, i + 2, memo);
                                  
