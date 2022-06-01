@@ -50,7 +50,7 @@ public:
 		{
             ListNode *node = cache[key];
 			result = node->value;
-			cache.erase(key);
+			
 			deleteNode(node);
 			addNode(node);
             cache[key]=node;
@@ -68,7 +68,7 @@ public:
         {
 			
 			ListNode *node = cache[key];
-			cache.erase(key);
+			
 			deleteNode(node);
             node->value = value;
 			addNode(node);
