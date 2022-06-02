@@ -16,12 +16,7 @@ public:
     }
     int findTargetSumWays(vector<int>& nums, int target) {
         int n = nums.size();
-        int total = 0;
         
-        for(auto i: nums)
-        {
-            total += i;
-        }
         map<pair<int,int>, int> memo;
 
         return find_ways_to_target(nums, target, 0, 0, memo);
