@@ -15,7 +15,7 @@ public:
     
     vector<int> rightSideView(TreeNode* root) {
         vector<int> v;
-        int height = 0;
+        
         helper(root ,v, 0);
         return v;
     }
