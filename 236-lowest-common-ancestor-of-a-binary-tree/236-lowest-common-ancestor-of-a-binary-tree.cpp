@@ -30,7 +30,7 @@ public:
 
 
 
-              if (left && right) {
+            if (left && right) {
                 return root;
             }
 
@@ -44,7 +44,7 @@ public:
                 return right;
             }
 
-          return NULL;
+                return NULL;
             }  
 
 
