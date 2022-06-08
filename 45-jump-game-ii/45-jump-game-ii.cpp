@@ -22,9 +22,11 @@ public:
             {
                 jumps++;
                 start_to_see = farthest;
-                if(start_to_see == A.size() - 1)
-                    return jumps;
+                
             }
+            
+            if(start_to_see == A.size() - 1)
+                    return jumps;
         }
 
         return jumps;
