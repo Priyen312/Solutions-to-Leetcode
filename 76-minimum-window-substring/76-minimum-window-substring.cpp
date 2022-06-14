@@ -57,42 +57,27 @@ public:
 //         else
 //             return "";
         
-             
-//         unordered_map<char, int> countT;
+
+        unordered_map<char, int> countT;
+        for(auto c: t) 
+            countT[c]++;
         
-//         for(auto c: t) 
-//             countT[c]++;
+        int need = t.size(), l = 0, r = 0, minimum_window = INT_MAX, start = 0;
         
-//         int need = t.size(), 
-//         l = 0, r = 0, 
-//         minimum_string = INT_MAX, start = 0;
-        
-        
-//         while(r < s.size()){
+        while(r < s.size()){
             
-//             if(countT[s[r++]]-- > 0)
-//                 need--;
+            if(countT[s[r++]]-- > 0) 
+                need--; //in t
             
-//             while(need == 0){ //valid
-//                 if(r - l < minimum_string)
-//                     minimum_string = r - (l = start);
-                
-//                 if(countT[s[start++]]++ == 0) need++;  //make it invalid
-//             }  
-//         }
-//         return minimum_string ==INT_MAX? "":s.substr(start, minimum_string);
-        
-             vector<int> map(128,0);
-        for(auto c: t) map[c]++;
-        int counter=t.size(), begin=0, end=0, d=INT_MAX, head=0;
-        while(end<s.size()){
-            if(map[s[end++]]-->0) counter--; //in t
-            while(counter==0){ //valid
-                if(end-begin<d)  d=end-(head=begin);
-                if(map[s[begin++]]++==0) counter++;  //make it invalid
+            while(need == 0){ //valid
+                if(r - l < minimum_window)  
+                    minimum_window = r - (start = l);
+                if(countT[s[l++]]++==0) 
+                    need++;  //make it invalid
             }  
         }
-        return d==INT_MAX? "":s.substr(head, d);
+        
+        return minimum_window == INT_MAX? "":s.substr(start, minimum_window);
     
     }
     
