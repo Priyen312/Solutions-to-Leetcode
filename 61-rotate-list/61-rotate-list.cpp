@@ -28,7 +28,7 @@ public:
        
         while(k--)
         {
-           tail = node;
+            tail = node;
             node = node->next;
         }
        
