@@ -19,7 +19,8 @@ public:
             s = s->next;f = f->next->next;
             
             if(s==f)
-                {ListNode *temp = s;
+            {
+                ListNode *temp = s;
                  
                  do{
                      temp = temp->next;
@@ -27,14 +28,14 @@ public:
                      
                      
                  }while(temp!=s);
-            return length;
-                
-                }
+            
+                return length;
+      
+            }
         }
-        
         return 0;
-        
     }
+    
     ListNode *detectCycle(ListNode *head) {
         if(!len(head))
         {
@@ -52,7 +53,7 @@ public:
         ListNode *first = head;
      
         
-        while(first!=move && first!=nullptr && move!=nullptr)
+        while(first!=move)
         {
             first=first->next;
             move=move->next;
