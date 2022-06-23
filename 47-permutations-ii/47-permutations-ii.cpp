@@ -13,14 +13,15 @@ public:
         
         for(int i = index; i < nums.size(); i++)
         {
-            if(s.find(nums[i]) == s.end())
+            if(s.find(nums[i]) == s.end())// check if the number in the array has already been considered for the permutation
             {
+                s.insert(nums[i]);
+                
                 swap(nums[index], nums[i]);
                 generate_permutations(nums, permutations, index + 1);
-                
                 swap(nums[index], nums[i]);
                 
-                s.insert(nums[i]);
+                
             }
             
                        
