@@ -6,7 +6,7 @@ public:
         
         for(auto i: prerequisites)
         {
-            indegree[i[0]]++;// [a,b] b->a
+            indegree[i[0]]++;// [a,b] b->a a++
             adj[i[1]].push_back(i[0]);
         }
         
@@ -18,7 +18,7 @@ public:
         {
             if(indegree[i] == 0)
             {
-                q.push(i);
+                q.push(i);// starting node
                 visited[i] = 1;
                 count++;
             }
