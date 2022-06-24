@@ -2,7 +2,7 @@ class Solution {
 public:
     int totalFruit(vector<int>& fruits) {
         
-       
+       //https://www.youtube.com/watch?v=s_zu2dOkq80
         int last_fruit = -1, second_last_fruit = -1;
         int last_fruit_count = 0;
         
@@ -29,13 +29,12 @@ public:
             else
             {
                 last_fruit_count = 1;
-            }
-               
-            if(curr_fruit != last_fruit)
-            {
+                
                 second_last_fruit = last_fruit;
                 last_fruit = curr_fruit;
             }
+               
+            
             maximum = max(maximum, curr_maximum);
             
         }
