@@ -20,7 +20,7 @@ public:
         v(root->left , k);
         c++;
         if(c == k)
-             ans = root->val;;
+             ans = root->val;
         kthSmallest(root->right, k);
   
     }
@@ -29,7 +29,6 @@ public:
      
         
         v(root , k);
-       
         return ans;
         
      
