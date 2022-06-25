@@ -24,7 +24,7 @@ public:
             
             window[c]++;
             
-            if(countT.find(c) != countT.end() and window[c] == countT[c])
+            if(window[c] == countT[c])
             {
                 have++;
             }
