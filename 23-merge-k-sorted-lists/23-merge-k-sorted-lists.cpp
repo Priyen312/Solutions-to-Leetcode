@@ -37,20 +37,41 @@ public:
     }
     
     ListNode* mergeKLists(vector<ListNode*>& lists)
-    {
-        if(lists.empty())
+    {//O(nlogk), O(1)
+        int num = lists.size();
+        int interval = 1;
+        
+        while(interval < num)
         {
-        return nullptr;
+            for(int i = 0; i < num - interval; i += interval * 2)
+            {
+                lists[i] = merge2Lists(lists[i], lists[i + interval]);
+                
+            }
+            
+            interval *=2;
         }
         
-        while(lists.size() > 1)
-        {
-            lists.push_back(merge2Lists(lists[0], lists[1]));
-            lists.erase(lists.begin());
-            lists.erase(lists.begin());
-        }
-        return lists.front();
+        if(num > 0)
+            return lists[0];
+        else
+            return nullptr;
     }
+//     ListNode* mergeKLists(vector<ListNode*>& lists)
+//     {
+//         if(lists.empty())
+//         {
+//         return nullptr;
+//         }
+        
+//         while(lists.size() > 1)
+//         {
+//             lists.push_back(merge2Lists(lists[0], lists[1]));
+//             lists.erase(lists.begin());
+//             lists.erase(lists.begin());
+//         }
+//         return lists.front();
+//     }
 
 //     ListNode* mergeKLists(vector<ListNode*>& lists) {
 //         //Convert merge k lists problem to merge 2 lists (k-1) times.
@@ -82,27 +103,7 @@ public:
     
    
     
-//     ListNode* mergeKLists(vector<ListNode*>& lists)
-//     {
-//         int num = lists.size();
-//         int interval = 1;
-        
-//         while(interval < num)
-//         {
-//             for(int i = 0; i < num - interval; i = interval * 2)
-//             {
-//                 lists[i] = merge2Lists(lists[i], lists[i + interval]);
-                
-//             }
-            
-//             interval *=2;
-//         }
-        
-//         if(num > 0)
-//             return lists[0];
-//         else
-//             return nullptr;
-//     }
+
     
     
 };
