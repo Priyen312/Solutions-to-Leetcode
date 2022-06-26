@@ -24,10 +24,10 @@ public:
     {
         if(root == nullptr) return 0;
         
-        int ld = helper(root->left);
-        int rd = helper(root->right);
-        ld = max(0,ld);//because the roots have negative values too
-        rd = max(0,rd);
+        int ld = max(0, helper(root->left));//because the roots have negative values too
+        int rd = max(0, helper(root->right));
+        
+        
         maxsum = max(maxsum, ld + rd + root->val);
         
     
