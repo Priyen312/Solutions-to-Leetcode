@@ -1,5 +1,6 @@
 class Solution {
 public:
+    
     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
         
         vector<int> indegree(numCourses, 0);
@@ -62,4 +63,41 @@ public:
         return order_of_courses;
         
     }
+
+//     void find_cycle(vector<int> &indegree, int course, vector<vector<int>> adj, vector<int> &order)
+//     {
+//         order.push_back(course);
+//         indegree[course] = -1;
+//         for(int nei: adj[course])
+//         {
+//             indegree[nei]--;
+//             if(indegree[nei] == 0)
+//                 find_cycle(indegree, nei, adj, order);
+           
+//         }
+
+//     }
+//     vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites)
+//     {
+//         vector<vector<int>> adj(numCourses, vector<int> ());
+//         vector<int> indegree(numCourses, 0);
+//         for(auto course : prerequisites)
+//         {
+//             indegree[course[0]]++;
+//             adj[course[1]].push_back(course[0]);
+//         }
+        
+//         vector<int> order;
+        
+//         for(int i = 0; i < numCourses; i++)
+//         {
+//             if(indegree[i] == 0)
+//                 find_cycle(indegree, i, adj, order);
+//         }
+//         if(order.size() == numCourses) return order;
+        
+//         return {};
+
+//     }
+
 };
