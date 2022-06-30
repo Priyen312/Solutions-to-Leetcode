@@ -9,11 +9,10 @@ public:
 
 
 class Solution {
-private:
+   
+public:
     
-
-    Trie* root=nullptr;
-    
+    Trie* root = new Trie();
     void addWord(string &s)
     {
         Trie* temp = root;
@@ -22,11 +21,11 @@ private:
         {
             int index = c -'a';
             if(temp->child[index] == nullptr){
-                temp->child[index]=new Trie;
+                temp->child[index] = new Trie();
             }
-            temp=temp->child[index];
+            temp = temp->child[index];
         }
-        temp->word=s;
+        temp->word = s;
         temp->isWord = true;
     }
     
@@ -67,12 +66,6 @@ private:
         
         return;
 
-    }
-    
-public:
-    Solution()
-    {
-        root = new Trie;
     }
     vector<string> findWords(vector<vector<char>>& board, vector<string>& words) {
         
