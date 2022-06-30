@@ -32,17 +32,11 @@ public:
             adj[i[1]].push_back(i[0]);
         }
         vector<int> vis(numCourses, 0);
-        if(order.size() == numCourses)
-        {
-            for(auto course: order)
-                cout<< course<< " ";
-            
-            cout<<endl;
-        }
-        else cout<< "";
+        
+        
         for(int course = 0; course < numCourses; course++)
         {
-            if(vis[course] != 2 and cycle(course, adj, vis))
+            if(vis[course] == 0 and cycle(course, adj, vis))
                 return false;
         }
         
