@@ -8,7 +8,7 @@ public:
         {   
             if(nums[i] >= 0)
             {
-                max_product = max(max_product * nums[i], nums[i]);// the case is used so that an earlier multiplication with zero leads us to start with the current number
+                max_product = max(max_product * nums[i], nums[i]);// the case is used as there could be an earlier multiplication with zero
                 min_product = min(min_product * nums[i], nums[i]);
             }
             else{
