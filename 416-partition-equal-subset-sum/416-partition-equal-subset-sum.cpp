@@ -37,8 +37,9 @@ public:
 //         return get_sum(nums, sum / 2, n, memo);
         
 //     }
-    bool canPartition(vector<int>& arr)
-{
+    
+bool canPartition(vector<int>& arr)
+{// O(2^n) -->  O(sum*n)
     int n = arr.size();
     
     int sum = 0;
@@ -55,7 +56,7 @@ public:
     
     
    
-    return isSubsetSum(arr, n, sum / 2, dp);
+    return isSubsetSum(arr, 0, sum / 2, dp);
 }
     
 bool isSubsetSum(vector<int>& arr, int n, int sum,
@@ -64,7 +65,9 @@ bool isSubsetSum(vector<int>& arr, int n, int sum,
     // Base Cases
     if (sum == 0)
         return true;
-    if (n == 0 && sum != 0)
+    if(sum < 0)
+        return false;
+    if (n == arr.size() && sum != 0)
         return false;
  
     
@@ -73,13 +76,13 @@ bool isSubsetSum(vector<int>& arr, int n, int sum,
     }
  
     
-    if (arr[n - 1] > sum)
-        return isSubsetSum(arr, n - 1, sum, dp);
+//     if (arr[n] > sum)
+//         return isSubsetSum(arr, n - 1, sum, dp);
  
     
     return dp[n][sum]
-           = isSubsetSum(arr, n - 1, sum, dp)
-             || isSubsetSum(arr, n - 1, sum - arr[n - 1],
+           = isSubsetSum(arr, n + 1, sum, dp)
+             || isSubsetSum(arr, n + 1, sum - arr[n],
                             dp);
 }
  
