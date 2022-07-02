@@ -8,20 +8,24 @@
  */
 class Solution {
 public:
-    ListNode* detectCycle(ListNode *list) {
-    unordered_map<ListNode*, int> visitedNodes;
-	ListNode* currentNode = list;
-	while(currentNode != NULL) {
-		if (visitedNodes[currentNode] == 0) {
-			visitedNodes[currentNode] = 1;
-		} else {
-            cout<<currentNode->val;
-			return currentNode;
-		}
-		currentNode = currentNode->next;
-	}
-	return nullptr;
+    ListNode* usingmaps(ListNode *list) {
         
+        unordered_map<ListNode*, int> visitedNodes;
+        ListNode* currentNode = list;
+        
+        while(currentNode != NULL) {
+            if (visitedNodes[currentNode] == 0) {
+                visitedNodes[currentNode] = 1;
+            } 
+            else {
+                cout<<currentNode->val;
+                return currentNode;
+            }
+            currentNode = currentNode->next;
+        }
+        
+        return nullptr;
+
     }
     int len(ListNode *head)
     {
@@ -51,30 +55,30 @@ public:
         return 0;
     }
     
-//     ListNode *detectCycle(ListNode *head) {
-//         if(!len(head))
-//         {
-//             return nullptr;
-//         }
+    ListNode *detectCycle(ListNode *head) {
+        if(!len(head))
+        {
+            return nullptr;
+        }
         
-//         int l = len(head);
-//         ListNode *move = head;
-//         while(l>0)
-//         {
-//             move = move->next;
-//             l--;
-//         }
+        int l = len(head);
+        ListNode *move = head;
+        while(l>0)
+        {
+            move = move->next;
+            l--;
+        }
         
-//         ListNode *first = head;
+        ListNode *first = head;
      
         
-//         while(first!=move)
-//         {
-//             first=first->next;
-//             move=move->next;
-//         }
+        while(first!=move)
+        {
+            first=first->next;
+            move=move->next;
+        }
         
-//         return first;
-//     }
+        return first;
+    }
    
 };
