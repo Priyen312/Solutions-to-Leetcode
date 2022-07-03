@@ -13,16 +13,16 @@ public:
         
         int n = nums.size();
         
-        for(int i = 0; i < n; i++)
+        for(int r = 0; r < n; r++)
         {
-            product *= nums[i];
+            product *= nums[r];
             
             while(product >= k)
             {
                 product /= nums[l++];//close the window
             }
             
-            ans += i - l + 1;
+            ans += r - l + 1;
             
         }
         
