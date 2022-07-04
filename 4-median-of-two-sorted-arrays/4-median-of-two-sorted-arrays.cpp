@@ -17,7 +17,7 @@ public:
         {
             
             int mid1 = (l + h) / 2;// exact middle of first array
-            int mid2 = (n1 + n2 + 1) / 2  // middle of merged array
+            int mid2 = (n1 + n2) / 2  // middle of merged array
                                 - mid1; // minus the middle that has already been taken
             
                 
@@ -27,19 +27,21 @@ public:
             int H1 = mid1 == n1 ? INT_MAX : nums1[mid1];
             int H2 = mid2 == n2 ? INT_MAX : nums2[mid2];
                 
-            if(L1 <= H2 and L2 <= H1)
+            
+            
+            if(L1 > H2)
+                h = mid1 - 1;
+            
+            else if(L2 > H1)
+                l = mid1 + 1;
+            
+            else
             {
                 if((n1 + n2) % 2 == 1)
-                    return max(L1, L2);
+                    return min(H1, H2);
                 
                     return (max(L1, L2) + min(H1, H2)) / 2.0;
             }
-            
-            else if(L1 > H2)
-                h = mid1 - 1;
-            
-            else
-                l = mid1 + 1;
         }
         
         return 0.0;
