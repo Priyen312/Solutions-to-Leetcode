@@ -11,26 +11,27 @@ class Solution {
 public:
 
 void dfs(TreeNode* root, map<int, vector<int>> &adj, int p)
-{    
+{    //https://leetcode.com/problems/all-nodes-distance-k-in-binary-tree/discuss/143775/very-easy-to-understand-c%2B%2B-solution.
     if(root == nullptr)
         return;
     
     adj[root->val].push_back(p);
+    adj[p].push_back(root->val);
     if(root->left)
     {
-        adj[root->val].push_back(root->left->val);
+        //adj[root->val].push_back(root->left->val);
         dfs(root->left, adj, root->val);
 
     }
     if(root->right)
     {
-        adj[root->val].push_back(root->right->val);
+        //adj[root->val].push_back(root->right->val);
         dfs(root->right, adj, root->val);
     }
     
     
 }
-vector<int> bfs(map<int,vector<int>> &adj, map<int,int> &visited, int start, int k)
+vector<int> bfs(map<int,vector<int>> &adj, unordered_map<int,int> &visited, int start, int k)
 {
     queue<int> q;
     q.push(start);
@@ -82,7 +83,7 @@ vector<int> bfs(map<int,vector<int>> &adj, map<int,int> &visited, int start, int
         map<int, vector<int>> adj;
         dfs(root, adj, -1);
 
-        map<int,int> visited;
+        unordered_map<int,int> visited;
         visited[-1] = 1;
 
         return bfs(adj, visited, target->val, k);
