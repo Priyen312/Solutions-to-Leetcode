@@ -17,7 +17,8 @@ public:
 */
 
 class Solution {
-public:
+
+    public:
     Node* connect(Node* root) {
         Node *curr = root;
         while(curr)
@@ -48,4 +49,40 @@ public:
         return root;
         
     }
+//     private:
+//     Node* fnext(Node* root) {
+//         if (root == NULL) return NULL;
+//         if (root->left) return root->left;  
+//         if (root->right) return root->right;
+//         return root;
+//         return fnext(root->next);
+//     }
+    
+//     void helper(Node *root) {
+        
+//         if (root == NULL) return;
+//         if (root->left) {
+//             if (root->right) {
+//                 root->left->next = root->right;
+//             } else {
+//                 root->left->next = fnext(root->next);
+//             }
+//         }
+        
+//         if (root->right) {
+//             root->right->next = fnext(root->next);
+//         }
+        
+//         helper(root->right);
+//         helper(root->left);
+//     }
+    
+//     public:
+//     Node* connect(Node* root)
+//     {
+//         helper(root);
+//         return root;
+//     }
+    
+    
 };
