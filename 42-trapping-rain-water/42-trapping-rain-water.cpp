@@ -35,21 +35,32 @@ public:
 // }
     
     int trap(vector<int> &nums) {
-        int leftmax = nums[0];
-        int rightmax = nums[nums.size() -1];
+        int leftmax = 0;
+        int rightmax = 0;
         
-        int l = 0, r = nums.size() - 1, res = 0;
+        int l = 0, r = nums.size() -1, res = 0;
         
         while(l < r) {
-            if(leftmax < rightmax) {
+            if(nums[l] < nums[r]) {
+                if(nums[l] < leftmax) {
+                    res += leftmax - nums[l];
+                }
+                else {
+                    leftmax = nums[l];
+                }
                 l +=1;
-                leftmax = max(leftmax, nums[l]);
-                res += leftmax - nums[l];
+                
             }
             else {
+                if(nums[r] < rightmax) {
+                    res += rightmax - nums[r];
+                }
+                else {
+                    rightmax = nums[r];
+                }
+               
                 r -=1;
-                rightmax = max(rightmax, nums[r]);
-                res += rightmax - nums[r];
+                
             }
         }
         
