@@ -42,12 +42,14 @@ public:
         
         while(l < r) {
             if(nums[l] < nums[r]) {
-                if(nums[l] < leftmax) {
-                    res += leftmax - nums[l];
-                }
-                else {
-                    leftmax = nums[l];
-                }
+                // if(nums[l] < leftmax) {
+                //     res += leftmax - nums[l];
+                // }
+                // else {
+                //     leftmax = nums[l];
+                // }
+                leftmax = max(leftmax, nums[l]);
+                res += leftmax - nums[l];
                 l +=1;
                 
             }
