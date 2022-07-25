@@ -28,7 +28,7 @@ public:
     string changePre(string &word)
     {
         Trie *temp = root;
-        string prefix = "";
+        
         for(char c: word) {
            
             if(temp->isWord) {
@@ -42,8 +42,8 @@ public:
             
         }
                 
-        prefix = temp->Pre != "" ? temp->Pre : word;
-        return prefix;
+        
+        return word;
     }
     string replaceWords(vector<string>& dictionary, string sentence) {
         for(auto word: dictionary) {
