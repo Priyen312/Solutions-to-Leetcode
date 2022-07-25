@@ -53,7 +53,7 @@ public:
         istringstream s(sentence);
         string word, ans = "";
         
-        while(s>>word) {
+        while(s >> word) {
             ans += changePre(word) + " ";
         }
         
