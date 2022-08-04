@@ -1,50 +1,28 @@
 class RandomizedCollection {
-private:
-    vector<pair<int, int>> nums;
-    unordered_map<int, vector<int>> m;
+  vector<int> v;
+  unordered_map<int, unordered_set<int>> m;
+    
 public:
-    RandomizedCollection() {
-        
+  bool insert(int val) {
+    v.push_back(val);
+    m[val].insert(v.size() - 1);
+    return m[val].size() == 1;
+  }
+  bool remove(int val) {
+    auto it = m.find(val);
+    if (it != end(m)) {
+      auto free_pos = *it->second.begin();
+      it->second.erase(it->second.begin());
+      v[free_pos] = v.back();
+      m[v.back()].insert(free_pos);
+      m[v.back()].erase(v.size() - 1);
+      v.pop_back();
+      if (it->second.size() == 0) m.erase(it);
+      return true;
     }
-    
-
-
-    bool insert(int val) {
-        bool not_present = m.find(val) == m.end();
-        
-        m[val].push_back(nums.size()); // pushing the new index to the map
-        
-        nums.push_back({val, m[val].size() - 1}); //pushing the number and it's corresponding index to the list
-        
-        return not_present;
-    }
-    
-    bool remove(int val) {
-        
-        auto present = m.find(val) != m.end();
-        
-        if(present)
-        {
-            auto [value, index] = nums.back(); //[value, index]
-            
-            m[value][index] = m[val].back(); // change the last element's index
-            
-            nums[m[val].back()] = {value, index}; // overwrite the 'to be removed element' with [value, index]
-            
-            m[val].pop_back(); // remove the last index of the 'value to be removed'
-            
-            if(m[val].empty()) // remove from map if totally removed from nums
-                m.erase(val);
-            
-            nums.pop_back(); // delete the last element as it is now a redundance
-        }
-        return present;
-        
-    }
-    
-    int getRandom() {
-        return nums[rand() % nums.size()].first;
-    }
+    return false;
+  }
+  int getRandom() { return v[rand() % v.size()]; }
 };
 
 /**
