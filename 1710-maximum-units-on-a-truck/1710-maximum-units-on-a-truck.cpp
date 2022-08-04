@@ -9,9 +9,9 @@ public:
         
         int total = 0;
         for(int i = 0; i < boxTypes.size(); i++) {
-            int count = min(boxTypes[i][0], truckSize);
-            total += count * boxTypes[i][1];
-            truckSize -= count;
+            int boxes = min(boxTypes[i][0], truckSize);
+            total += boxes * boxTypes[i][1];
+            truckSize -= boxes;
             
             if(truckSize <= 0)
                 return total;
