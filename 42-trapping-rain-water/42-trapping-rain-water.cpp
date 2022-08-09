@@ -35,6 +35,11 @@ public:
 // }
     
     int trap(vector<int> &nums) {
+//         arr[left] or arr[right] always is a pointer to a value which is the max value found so far, searching from left and right.
+
+// If arr[left] <= arr[right], this means that arr[right] is the max value found so far. This also means that maxLeft will be less than or equal to arr[right], which means that maxLeft will be bounding the addition to the answer(res variable, in this solution), since it has be less than or equal to arr[right] e, so we don't have to consider maxRight when adding to the counter.
+
+// If arr[left] > arr[right] , this means at arr[left] is the max value found so far. Same thing applies as explained in the paragraph above.
         int leftmax = 0;
         int rightmax = 0;
         
@@ -42,16 +47,14 @@ public:
         
         while(l < r) {
             if(nums[l] < nums[r]) {
-                // if(nums[l] < leftmax) {
-                //     res += leftmax - nums[l];
-                // }
-                // else {
-                //     leftmax = nums[l];
-                // }
-                leftmax = max(leftmax, nums[l]);
-                res += leftmax - nums[l];
-                l +=1;
+                if(nums[l] < leftmax) {
+                    res += leftmax - nums[l];
+                }
+                else {
+                    leftmax = nums[l];
+                } 
                 
+                l++;
             }
             else {
                 if(nums[r] < rightmax) {
