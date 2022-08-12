@@ -34,7 +34,7 @@ public:
       
         int l = 0, r = nums.size() - 1;
         
-        while(l < r)
+        while(l < r) // find the minimum
         {
             int mid = (l + r)/2;
             
