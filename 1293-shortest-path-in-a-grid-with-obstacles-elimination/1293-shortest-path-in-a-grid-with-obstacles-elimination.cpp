@@ -59,14 +59,13 @@ public:
             
                 if(R >= 0 and R < n and C >= 0 and C < m and vis[R][C][bal] == 0)
                 {
-                    vis[R][C][bal] = 1;
+                    
                      
                         if(grid[R][C] == 1)
                         {
                             if(bal > 0){
                                 cell entry(R, C, bal - 1, steps + 1);
-                                //vis[R][C] = 1;
-
+                                vis[R][C][bal] = 1;
                                 q.push(entry);
                             }
                             
@@ -74,7 +73,7 @@ public:
                         else
                         {
                             cell entry(R, C, bal, steps + 1);
-                            //vis[R][C] = 1;
+                            vis[R][C][bal] = 1;
 
                             q.push(entry);
                         }
