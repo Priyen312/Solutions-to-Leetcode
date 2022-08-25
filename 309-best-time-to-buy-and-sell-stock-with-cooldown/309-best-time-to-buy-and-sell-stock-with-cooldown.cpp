@@ -9,10 +9,10 @@ public:
             return memo[i][buying];
         
         if(buying)
-        {
+        {                           // buy now                          don't buy
             memo[i][buying] = max(stocks(i + 1, !buying, p, memo) - p[i], stocks(i + 1, buying, p, memo));
         }
-        else
+        else                       // sell and enter a cooldown         don't sell
             memo[i][buying] = max(stocks(i + 2, !buying, p, memo) + p[i], stocks(i + 1, buying, p, memo));
         
         return memo[i][buying];
