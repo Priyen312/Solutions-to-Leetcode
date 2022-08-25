@@ -1,23 +1,26 @@
 class Solution {
 public:
-    int maxProfit(vector<int>& p) {
-        if (p.size() < 2)
-		return 0;
-        int i, sz = p.size();
-        int ret = 0;
-        vector<int> buy(sz, 0);
-        vector<int> sell(sz, 0);
-        buy[0] = -p[0];
-        for (i = 1; i < sz; ++i)
+    int stocks(int i, int buying, vector<int>& p, vector<vector<int>> &memo)
+    {
+        if(i >= p.size())
+            return 0;
+        
+        if(memo[i][buying] != INT_MIN)
+            return memo[i][buying];
+        
+        if(buying)
         {
-            sell[i] = max(buy[i - 1] + p[i], sell[i - 1] - p[i - 1] + p[i]);
-            if (ret < sell[i]) //record the max sell[i]
-                ret = sell[i];
-            if (1 == i)
-                buy[i] = buy[0] + p[0] - p[1];
-            else
-                buy[i] = max(sell[i - 2] - p[i], buy[i - 1] + p[i - 1] - p[i]);
+            memo[i][buying] = max(stocks(i + 1, !buying, p, memo) - p[i], stocks(i + 1, buying, p, memo));
         }
-        return ret;
+        else
+            memo[i][buying] = max(stocks(i + 2, !buying, p, memo) + p[i], stocks(i + 1, buying, p, memo));
+        
+        return memo[i][buying];
+    }
+    int maxProfit(vector<int>& p) {
+       
+        vector<vector<int>> memo(p.size() + 1, vector<int>(2, INT_MIN));
+        return stocks(0, 1, p, memo);
+        
     }
 };
