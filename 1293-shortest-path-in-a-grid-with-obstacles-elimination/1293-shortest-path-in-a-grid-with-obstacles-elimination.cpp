@@ -63,7 +63,8 @@ public:
                      
                         if(grid[R][C] == 1)
                         {
-                            if(bal > 0){
+                            if(bal > 0)
+                            {
                                 cell entry(R, C, bal - 1, steps + 1);
                                 
 
@@ -78,6 +79,7 @@ public:
 
                             q.push(entry);
                         }
+                
                 }
             
             }
