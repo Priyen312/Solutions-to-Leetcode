@@ -16,11 +16,17 @@ public:
             return true;
         
         if(root->left and traverse(root->left, path, dest))
+        {
             path.push_back('L');
+            return true;
+        }
         else if(root->right and traverse(root->right, path, dest))
+        {
             path.push_back('R');
+            return true;
+        }
         
-        return !path.empty();
+        return false;
     }
     string getDirections(TreeNode* root, int startValue, int destValue) {
         string root_to_s, root_to_d;
